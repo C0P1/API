@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xXbym\\ServiciosWeb\\api\\API.csproj": {}
+    "C:\\Users\\xXbym\\ServiciosWeb\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xXbym\\ServiciosWeb\\api\\API.csproj": {
+    "C:\\Users\\xXbym\\ServiciosWeb\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xXbym\\ServiciosWeb\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\xXbym\\ServiciosWeb\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\xXbym\\ServiciosWeb\\api\\API.csproj",
+        "projectPath": "C:\\Users\\xXbym\\ServiciosWeb\\API\\API.csproj",
         "packagesPath": "C:\\Users\\xXbym\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xXbym\\ServiciosWeb\\api\\obj\\",
+        "outputPath": "C:\\Users\\xXbym\\ServiciosWeb\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xXbym\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -50,6 +50,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
