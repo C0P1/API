@@ -127,3 +127,8 @@ C:\Users\xXbym\ServiciosWeb\API\bin\Debug\net8.0\client\package.json
 C:\Users\xXbym\ServiciosWeb\API\bin\Debug\net8.0\client\tsconfig.app.json
 C:\Users\xXbym\ServiciosWeb\API\bin\Debug\net8.0\client\tsconfig.json
 C:\Users\xXbym\ServiciosWeb\API\bin\Debug\net8.0\client\tsconfig.spec.json
+C:\Users\xXbym\ServiciosWeb\api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\xXbym\ServiciosWeb\api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\xXbym\ServiciosWeb\api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\xXbym\ServiciosWeb\api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\xXbym\ServiciosWeb\api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

@@ -3,16 +3,19 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entitites;
+using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
+
 
 namespace API.Controllers;
 
-public class AccountController(DataContext context) : BaseApiController
+public class AccountController(
+    DataContext context,
+    ITokenServices tokenServices) : BaseApiController
 {
     [HttpPost("register")]   
-    public async Task<ActionResult<AppUser>> RegisterAsync (RegisterRequest request)
+    public async Task<ActionResult<UserResponse>> RegisterAsync (RegisterRequest request)
     {
         if(await UserExistsAsync(request.Username))
         {
@@ -30,7 +33,10 @@ public class AccountController(DataContext context) : BaseApiController
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return user;
+        return new UserResponse{
+            Username = user.UserName,
+            Token = tokenServices.CreateToken(user)
+        };
     }
 
     [HttpPost("login")]
