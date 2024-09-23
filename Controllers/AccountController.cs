@@ -7,13 +7,13 @@ using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace API.Controllers;
 
 public class AccountController(
     DataContext context,
     ITokenServices tokenServices) : BaseApiController
 {
+    
     [HttpPost("register")]   
     public async Task<ActionResult<UserResponse>> RegisterAsync (RegisterRequest request)
     {
