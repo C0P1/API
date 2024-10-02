@@ -15,9 +15,9 @@ public class AccountController(
 {
     
     [HttpPost("register")]   
-    public async Task<ActionResult<UserResponse>> RegisterAsync (RegisterRequest request)
+    public async Task<ActionResult<UserResponse>> RegisterAsync(RegisterRequest request)
     {
-        if(await UserExistsAsync(request.Username))
+        if( await UserExistsAsync(request.Username))
         {
             return BadRequest("Username already in use");
         } 
@@ -37,10 +37,10 @@ public class AccountController(
             Username = user.UserName,
             Token = tokenServices.CreateToken(user)
         };
-    }
+    }// RegisterAsync
 
     [HttpPost("login")]
-    public async  Task<ActionResult<AppUser>> Login(LoginRequest request)
+    public async  Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
     {
         var user = await context.Users.FirstOrDefaultAsync(x => 
         x.UserName.ToLower()== request.Username.ToLower());
@@ -62,7 +62,10 @@ public class AccountController(
             
         }
 
-        return user;
+        return new UserResponse{
+            Username = user.UserName,
+            Token = tokenServices.CreateToken(user)
+        };
     }
 
     private async Task<bool> UserExistsAsync(string username)
