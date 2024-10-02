@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,21 @@ import { Observable } from 'rxjs';
 export class AccountService {
   private http = inject(HttpClient);
   baseurl = "http://localhost:5000/api/"
+  currentUser = signal<User | null>(null);
+  
+  login(model : any) {
+    return this.http.post<User>(this.baseurl + "account/login",model).pipe(
+      map((user) =>{
+        if (user){
+          localStorage.setItem("user", JSON.stringify(user));
+          this.currentUser.set(user);
+        }
+      })
+    );
+  }
 
-  login(model : any): Observable<Object>{
-    return this.http.post(this.baseurl + "account/login",model);
+  logout(){
+    localStorage.removeItem("user");
+    this.currentUser.set(null);
   }
 }
