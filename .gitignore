@@ -491,3 +491,6 @@ client/*.pem
 client/ssl/*.pem
 client/ssl/localhost-key.pem
 client/ssl/localhost.pem
+bin/Debug/net8.0/API.dll
+bin/Debug/net8.0/API.exe
+bin/Debug/net8.0/API.pdb
