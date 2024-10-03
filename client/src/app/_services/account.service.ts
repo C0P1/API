@@ -11,7 +11,7 @@ export class AccountService {
   baseurl = "http://localhost:5000/api/"
   currentUser = signal<User | null>(null);
   
-  login(model : any) {
+  login(model : any):  Observable<User | void>{
     return this.http.post<User>(this.baseurl + "account/login",model).pipe(
       map((user) =>{
         if (user){
@@ -22,7 +22,7 @@ export class AccountService {
     );
   }
 
-  logout(){
+  logout(): void{
     localStorage.removeItem("user");
     this.currentUser.set(null);
   }
