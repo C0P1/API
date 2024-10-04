@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./nav/nav.component";
 import { AccountService } from './_services/account.service';
@@ -13,13 +12,10 @@ import { HomeComponent } from "./home/home.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  http= inject(HttpClient);
   private accountService = inject (AccountService);
-  title = 'Date me';
-  users: any;
+  title = 'Date me'; 
 
   ngOnInit(): void {
-    this.getUsers();
     this.setCurrentUser();
   }
 
@@ -30,11 +26,5 @@ export class AppComponent implements OnInit {
     this.accountService.currentUser.set(user);
   }
 
-  getUsers() {
-    this.http.get("http://localhost:5000/api/users").subscribe({
-      next: (response) => { this.users = response; },
-      error: (error) => { console.log(error); },
-      complete: () => { console.log("Requested completed"); }
-    });
-  }
+  
 }
