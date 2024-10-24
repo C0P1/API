@@ -10,7 +10,7 @@ public static class IdentityServiceExtensions
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
-            var tokenKey = config["TokenKey"] 
+            var tokenKey = config["TokenKey"]
                 ?? throw new ArgumentException("TokenKey");
             options.TokenValidationParameters = new TokenValidationParameters
             {
