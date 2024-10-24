@@ -1,3 +1,4 @@
+namespace API.Controllers;
 using System.Security.Cryptography;
 using System.Text;
 using API.Data;
@@ -7,20 +8,17 @@ using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Controllers;
-
 public class AccountController(
     DataContext context,
     ITokenServices tokenServices) : BaseApiController
 {
-    
-    [HttpPost("register")]   
+    [HttpPost("register")]
     public async Task<ActionResult<UserResponse>> RegisterAsync(RegisterRequest request)
     {
-        if( await UserExistsAsync(request.Username))
+        if(await UserExistsAsync(request.Username))
         {
             return BadRequest("Username already in use");
-        } 
+        }
 
         using var hmac = new HMACSHA512();
 
@@ -53,13 +51,12 @@ public class AccountController(
         using var hmac = new HMACSHA512(user.PasswordSalt);
         var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
 
-        for (int i=0; i<computeHash.Length; i++)
+        for (var i=0; i<computeHash.Length; i++)
         {
             if(computeHash[i] != user.PasswordHash[i])
             {
                 return Unauthorized("Invalid username or password");
             }
-            
         }
 
         return new UserResponse{
