@@ -40,8 +40,8 @@ export class TestErrorsComponent {
     })
   }
 
-  get400ValidationError():void{
-    this.http.get(this.baseUrl + "account/register", {}).subscribe({
+  get404ValidationError():void{
+    this.http.post(this.baseUrl + "account/register", {}).subscribe({
       next: (response) => console.log(response),
       error: (error) => console.log(error)
     })

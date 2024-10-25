@@ -13,5 +13,4 @@ export const authGuard: CanActivateFn = (route, state) => {
     toastr.error("You don't have acces right now")
     return false;
   }
-  return true;
 };
