@@ -19,22 +19,22 @@ public class AccountController(
         {
             return BadRequest("Username already in use");
         }
+        return Ok();
+        // using var hmac = new HMACSHA512();
 
-        using var hmac = new HMACSHA512();
+        // var user= new AppUser{
+        //     UserName = request.Username,
+        //     PasswordHash= hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
+        //     PasswordSalt= hmac.Key
+        // };
 
-        var user= new AppUser{
-            UserName = request.Username,
-            PasswordHash= hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
-            PasswordSalt= hmac.Key
-        };
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
 
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-
-        return new UserResponse{
-            Username = user.UserName,
-            Token = tokenServices.CreateToken(user)
-        };
+        // return new UserResponse{
+        //     Username = user.UserName,
+        //     Token = tokenServices.CreateToken(user)
+        // };
     }// RegisterAsync
 
     [HttpPost("login")]
