@@ -1,5 +1,5 @@
 namespace API.Data;
-using API.Entitites;
+using API.DataEntities;
 using Microsoft.EntityFrameworkCore;
 
 public class DataContext(DbContextOptions options) : DbContext(options)

@@ -2,7 +2,7 @@ namespace API.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using API.Entitites;
+using API.DataEntities;
 using Microsoft.IdentityModel.Tokens;
 
 public class TokenServices(IConfiguration config) : ITokenServices

@@ -1,7 +1,7 @@
 namespace API.Entities;
 
 using System.ComponentModel.DataAnnotations.Schema;
-using API.Entitites;
+using API.DataEntities;
 
 [Table("Photos")]
 public class Photo

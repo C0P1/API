@@ -1,6 +1,6 @@
 namespace API.Data;
 
-using API.Entitites;
+using API.DataEntities;
 
 public interface IUserRepository
 {
