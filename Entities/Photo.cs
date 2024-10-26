@@ -12,5 +12,5 @@ public class Photo
     public string? PublicId { get; set; }
     //EF Navigations properties
     public int AppUserId { get; set; }
-    public AppUser AppUser { get; set; } = null;
+    public AppUser AppUser { get; set; } = null!;
 }
