@@ -38,9 +38,9 @@ public class AccountController(
     }// RegisterAsync
 
     [HttpPost("login")]
-    public async  Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
+    public async Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
     {
-        var user = await context.Users.FirstOrDefaultAsync(x => 
+        var user = await context.Users.FirstOrDefaultAsync(x =>
         x.UserName.ToLower()== request.Username.ToLower());
 
         if(user == null)
