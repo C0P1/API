@@ -1,48 +1,46 @@
+namespace API.Controllers;
 using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
-using API.Entitites;
+using API.DataEntities;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
-namespace API.Controllers;
 
 public class AccountController(
     DataContext context,
     ITokenServices tokenServices) : BaseApiController
 {
-    
-    [HttpPost("register")]   
+    [HttpPost("register")]
     public async Task<ActionResult<UserResponse>> RegisterAsync(RegisterRequest request)
     {
-        if( await UserExistsAsync(request.Username))
+        if(await UserExistsAsync(request.Username))
         {
             return BadRequest("Username already in use");
-        } 
+        }
+        return Ok();
+        // using var hmac = new HMACSHA512();
 
-        using var hmac = new HMACSHA512();
+        // var user= new AppUser{
+        //     UserName = request.Username,
+        //     PasswordHash= hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
+        //     PasswordSalt= hmac.Key
+        // };
 
-        var user= new AppUser{
-            UserName = request.Username,
-            PasswordHash= hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
-            PasswordSalt= hmac.Key
-        };
+        // context.Users.Add(user);
+        // await context.SaveChangesAsync();
 
-        context.Users.Add(user);
-        await context.SaveChangesAsync();
-
-        return new UserResponse{
-            Username = user.UserName,
-            Token = tokenServices.CreateToken(user)
-        };
+        // return new UserResponse{
+        //     Username = user.UserName,
+        //     Token = tokenServices.CreateToken(user)
+        // };
     }// RegisterAsync
 
     [HttpPost("login")]
-    public async  Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
+    public async Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
     {
-        var user = await context.Users.FirstOrDefaultAsync(x => 
+        var user = await context.Users.FirstOrDefaultAsync(x =>
         x.UserName.ToLower()== request.Username.ToLower());
 
         if(user == null)
@@ -53,13 +51,12 @@ public class AccountController(
         using var hmac = new HMACSHA512(user.PasswordSalt);
         var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
 
-        for (int i=0; i<computeHash.Length; i++)
+        for (var i=0; i<computeHash.Length; i++)
         {
             if(computeHash[i] != user.PasswordHash[i])
             {
                 return Unauthorized("Invalid username or password");
             }
-            
         }
 
         return new UserResponse{
