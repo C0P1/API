@@ -1,4 +1,4 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Member } from '../../_models/member';
 import { RouterLink } from '@angular/router';
 
@@ -10,6 +10,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './member-card.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class MembersCardComponent {
+export class MembersCardComponent implements OnInit{
+  ngOnInit(): void {
+    console.log("member: " + this.member().userName);
+  }
   member = input.required<Member>();
 }
