@@ -495,3 +495,7 @@ client/ssl/localhost.pem
 # Ignorar archivos generados en la compilación
 API/bin/
 API/obj/
+
+
+coveragereport
+TestResult
