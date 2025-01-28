@@ -453,6 +453,7 @@ C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.Generated
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.AssemblyInfoInputs.cache
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.AssemblyInfo.cs
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.sourcelink.json
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.Unit.5851F037.Up2Date
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\API.UnitTest.dll
 C:\Users\xXbym\ServiciosWeb\API.UnitTest\obj\Debug\net8.0\refint\API.UnitTest.dll
