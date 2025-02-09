@@ -31,7 +31,7 @@ public class UsersController : BaseApiController
         return Ok(response);
     }
 
-    [HttpGet("{username}")] //api/v1/users/Olaf
+    [HttpGet("{username}", Name = "GetByUsername")] //api/v1/users/Olaf
     public async Task<ActionResult<MemberResponse>> GetByUsernameAsync(string username)
     {
         var member = await _repository.GetMemberAsync(username);
@@ -86,7 +86,8 @@ public class UsersController : BaseApiController
 
         if (await _repository.SaveAllAsync())
         {
-            return _mapper.Map<PhotoResponse>(photo);
+            return CreatedAtAction("GetByUsername",
+                new { username = user.UserName }, _mapper.Map<PhotoResponse>(photo));
         }
 
         return BadRequest("Problems adding the photo");
