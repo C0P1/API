@@ -3,14 +3,13 @@ using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
-using API.DataEntities;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 public class AccountController(
     DataContext context,
-    ITokenServices tokenServices) : BaseApiController
+    ITokenServices tokenService) : BaseApiController
 {
     [HttpPost("register")]
     public async Task<ActionResult<UserResponse>> RegisterAsync(RegisterRequest request)
@@ -40,8 +39,9 @@ public class AccountController(
     [HttpPost("login")]
     public async Task<ActionResult<UserResponse>> LoginAsync(LoginRequest request)
     {
-        var user = await context.Users.FirstOrDefaultAsync(x =>
-        x.UserName.ToLower()== request.Username.ToLower());
+        var user = await context.Users
+            .Include(x => x.Photos)
+            .FirstOrDefaultAsync(x => x.UserName.ToLower() == request.Username.ToLower());
 
         if(user == null)
         {
@@ -61,14 +61,11 @@ public class AccountController(
 
         return new UserResponse{
             Username = user.UserName,
-            Token = tokenServices.CreateToken(user)
+            Token = tokenService.CreateToken(user),
+            PhotoUrl = user.Photos.FirstOrDefault(p => p.IsMain)?.Url
         };
     }
 
-    private async Task<bool> UserExistsAsync(string username)
-    {
-        return await context.Users.AnyAsync(
-            user => user.UserName.ToLower() == username.ToLower()
-        );
-    }
+    private async Task<bool> UserExistsAsync(string username)=>
+        await context.Users.AnyAsync(u => u.UserName.ToLower() == username.ToLower());
 }
