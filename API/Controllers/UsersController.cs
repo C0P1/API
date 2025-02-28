@@ -111,7 +111,7 @@ public class UsersController : BaseApiController
     public async Task<ActionResult> DeletePhoto(int photoId)
     {
         var user = await _repository.GetByUsernameAsync(User.GetUserName());
-        if (user ==null) return BadRequest("User not found");
+        if (user == null) return BadRequest("User not found");
         var photo = user.Photos.FirstOrDefault(p => p.Id == photoId);
         if (photo == null || photo.IsMain) return BadRequest("This photo can´t be deleted");
         if(photo.PublicId != null)
