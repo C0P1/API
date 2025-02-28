@@ -47,6 +47,10 @@ export class PhotoEditorComponent implements OnInit {
     });
   }
   
+  deletePhoto(photoId: number){
+    
+  }
+
   fileOverBase(e: any){
     this.hasBaseDropZoneOver = e;
   }
