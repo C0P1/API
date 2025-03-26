@@ -499,8 +499,8 @@ client/ssl/localhost.pem
 **/TestResult/
 **/TestResults/
 **/coverage*/
-
-
+API/bin/
+API/obj
 API.UnitTest
 
 coveragereport
