@@ -24,7 +24,7 @@ export class MemberEditComponent implements OnInit {
         }
       }
     member?: Member;
-    private accountService = inject(AccountService);
+    public accountService = inject(AccountService);
     private membersService = inject(MembersService);
     private toastr = inject(ToastrService);
     ngOnInit(): void {
@@ -46,5 +46,9 @@ export class MemberEditComponent implements OnInit {
             this.editForm?.reset(this.member); 
           }
         })
+    }
+
+    onMemberChange(event: Member){
+      this.member = event;
     }
 }
