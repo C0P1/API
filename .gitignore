@@ -493,9 +493,13 @@ client/ssl/localhost-key.pem
 client/ssl/localhost.pem
 
 # Ignorar archivos generados en la compilación
-API/bin/
+# Ignorar carpetas comunes de compilación y pruebas
+**/bin/
+**/obj/
+**/TestResult/
+**/TestResults/
+**/coverage*/
 
-API/obj
 
 API.UnitTest
 
