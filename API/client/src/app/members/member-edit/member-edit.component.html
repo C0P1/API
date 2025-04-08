@@ -12,7 +12,11 @@
         </div>
         <div class="col-4">
             <div class="card">
+<<<<<<< HEAD
                 <img src="{{member.photoUrl}}" alt="{{member.knownAs}}" class="card-img img-thumbnail">
+=======
+                <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" class="card-img img-thumbnail">
+>>>>>>> Parcial04
                 <div class="card-body">
                     <div>
                         <strong>Location:</strong>
@@ -83,7 +87,14 @@
                     </form>
                 </tab>
                 <tab heading="Photos">
+<<<<<<< HEAD
                     Editor de fotos
+=======
+                    <app-photo-editor 
+                    [member]="member"
+                    (memberChange)="onMemberChange($event)">
+                    </app-photo-editor>
+>>>>>>> Parcial04
                 </tab>
             </tabset>
         </div>

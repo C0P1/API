@@ -493,10 +493,33 @@ client/ssl/localhost-key.pem
 client/ssl/localhost.pem
 
 # Ignorar archivos generados en la compilación
+# Ignorar carpetas comunes de compilación y pruebas
+**/bin/
+**/obj/
+**/TestResult/
+**/TestResults/
+**/coverage*/
 API/bin/
+<<<<<<< HEAD
 API/obj/
 API.UnitTest/bin/
 API.UnitTest/obj/
 
 coveragereport
 TestResult
+=======
+API/obj
+API.UnitTest
+
+coveragereport
+TestResult
+API/dating.db-shm
+API/dating.db-wal
+API/obj/API.csproj.nuget.dgspec.json
+API/obj/project.assets.json
+API/obj/project.nuget.cache
+API/obj/Debug/net8.0/API.AssemblyInfo.cs
+API/obj/Debug/net8.0/API.AssemblyInfoInputs.cache
+API/obj/Debug/net8.0/API.assets.cache
+API/obj/Debug/net8.0/API.csproj.AssemblyReference.cache
+>>>>>>> Parcial04

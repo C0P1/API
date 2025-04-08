@@ -1,5 +1,9 @@
 namespace API.Helpers;
 
+<<<<<<< HEAD
+=======
+using System.Globalization;
+>>>>>>> Parcial04
 using API.DataEntities;
 using API.DTOs;
 using API.Entities;
@@ -16,5 +20,10 @@ public class AutoMapperProfiles : Profile
             o => o.MapFrom(s => s.Photos.FirstOrDefault(p => p.IsMain)!.Url));
         CreateMap<Photo, PhotoResponse>();
         CreateMap<MemberUpdateRequest, AppUser>();
+<<<<<<< HEAD
+=======
+        CreateMap<RegisterRequest, AppUser>();
+        CreateMap<string, DateOnly>().ConvertUsing(s => DateOnly.Parse(s, CultureInfo.InvariantCulture));
+>>>>>>> Parcial04
     }
 }

@@ -1,3 +1,12 @@
 .dropdownToggle, .dropdown-item{ 
     cursor: pointer;
+<<<<<<< HEAD
+=======
+}
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
+>>>>>>> Parcial04
 }
