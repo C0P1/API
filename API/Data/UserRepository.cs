@@ -2,6 +2,7 @@ namespace API.Data;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Globalization;
 using API.DataEntities;
 using API.DTOs;
 using API.Helpers;
@@ -47,8 +48,15 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
         var maxBDay = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
  
         query = query.Where(u => u.BirthDay >= minBDay && u.BirthDay <= maxBDay);
+        
+        query = userParams.OrderBy.ToLower(CultureInfo.InvariantCulture) switch
+        {
+            "created" => query.OrderByDescending(x => x.Created),
+            _ => query.OrderByDescending(x => x.LastActive)
+        };
         return await PagedList<MemberResponse>.CreateAsync(
             query.ProjectTo<MemberResponse>(mapper.ConfigurationProvider), userParams.PageNumber, userParams.PageSize);
+
     }
 
     public async Task<bool> SaveAllAsync()
