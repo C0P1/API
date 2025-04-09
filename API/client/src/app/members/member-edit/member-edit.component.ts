@@ -5,20 +5,13 @@ import { Member } from '../../_models/member';
 import { AccountService } from '../../_services/account.service';
 import { MembersService } from '../../_services/members.service';
 import { ToastrService } from 'ngx-toastr';
-<<<<<<< HEAD
-=======
 import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
->>>>>>> Parcial04
 
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-<<<<<<< HEAD
-  imports: [TabsModule, FormsModule],
-=======
   imports: [TabsModule, FormsModule, PhotoEditorComponent],
->>>>>>> Parcial04
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
@@ -31,11 +24,7 @@ export class MemberEditComponent implements OnInit {
         }
       }
     member?: Member;
-<<<<<<< HEAD
-    private accountService = inject(AccountService);
-=======
     public accountService = inject(AccountService);
->>>>>>> Parcial04
     private membersService = inject(MembersService);
     private toastr = inject(ToastrService);
     ngOnInit(): void {
@@ -45,9 +34,9 @@ export class MemberEditComponent implements OnInit {
     loadMember() {
         const user = this.accountService.currentUser();
         if (!user) return;
-        this.membersService.getMember(user.username).subscribe({
-            next: member => this.member = member
-        })
+        //this.membersService.getMember(user.username).subscribe({
+        //   next: member => this.member = member
+        //})
     }
 
     updateMember() {
@@ -58,11 +47,8 @@ export class MemberEditComponent implements OnInit {
           }
         })
     }
-<<<<<<< HEAD
-=======
 
     onMemberChange(event: Member){
       this.member = event;
     }
->>>>>>> Parcial04
 }
