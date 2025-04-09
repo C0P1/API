@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './member-card.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class MembersCardComponent implements OnInit{
+export class MemberCardComponent implements OnInit{
   ngOnInit(): void {
     console.log("member: " + this.member().userName);
   }
