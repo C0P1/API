@@ -1,10 +1,7 @@
 namespace API.Extensions;
 
 using API.Data;
-<<<<<<< HEAD
-=======
 using API.Helpers;
->>>>>>> Parcial04
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +14,11 @@ public static class ApplicationServiceExtensions
         services.AddCors();
         services.AddScoped<ITokenServices, TokenServices>();
         services.AddScoped<IUserRepository, UserRepository>();
-<<<<<<< HEAD
-        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-=======
         services.AddScoped<IPhotoService,PhotoService>();
+        services.AddScoped<LogUserActivity>();
+        
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
->>>>>>> Parcial04
         return services;
     }
 }
